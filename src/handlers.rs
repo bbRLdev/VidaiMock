@@ -357,8 +357,8 @@ pub async fn streaming_handler(
                          return None;
                      }
                 }
-
-                if idx > chunks.len() + 1 { return None; }
+                // + 1 is necessary here in order to return DONE
+                if idx > chunks.len() + 1 { return None; } 
                                 
                 let raw_data: Option<String> = if idx == 0 {
                     // Start Event
